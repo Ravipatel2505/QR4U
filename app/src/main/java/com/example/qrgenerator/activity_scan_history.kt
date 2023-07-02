@@ -60,10 +60,10 @@ class activity_scan_history : AppCompatActivity() {
 //            startActivity(intent)
 //        }
     }
-    fun deletehistory(id_scan: Int) {
+    fun deletehistory(id: Int) {
 
         val db = DBHelper(this, null)
-        db.deleteHistoryById(id_scan)
+        db.deleteHistoryById(id)
         db.getHistory()
     }
 }

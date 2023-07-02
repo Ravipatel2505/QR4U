@@ -11,7 +11,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.qrgenerator.R
 
-class ScanAdapter(val c: Context, val List: MutableList<ScanViewModel>) : RecyclerView.Adapter<ScanAdapter.ViewHolder>() {
+class ScanAdapter(val c: Context, val List: ArrayList<ScanViewModel>) : RecyclerView.Adapter<ScanAdapter.ViewHolder>() {
 
     var onItemclick : ((ScanViewModel) -> Unit)? = null
     var onclickdeleteItem : ((ScanViewModel) -> Unit)? = null
@@ -43,9 +43,10 @@ class ScanAdapter(val c: Context, val List: MutableList<ScanViewModel>) : Recycl
         holder.textView.text = ScanViewModelList.text
         // sets the text to the textview from our itemHolder class
         holder.btndelete.setOnClickListener{
+            onclickdeleteItem?.invoke(ScanViewModelList)
             List.removeAt(position)
             notifyDataSetChanged()
-            onclickdeleteItem?.invoke(ScanViewModelList)
+
         }
 //      set onclicklistner
         holder.itemView.setOnClickListener{
